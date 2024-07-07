@@ -3,7 +3,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - aws s3 sync . s3://wiegaaterkoffiehalen-static/ --exclude "*_Store" --exclude "video*" --exclude "sitemap.xml" --exclude "script*" --exclude appspec.yml --exclude .gitignore --exclude .git --delete
+      - aws s3 sync . s3://wiegaaterkoffiehalen-static/ --exclude "*_Store" --exclude "video*" --exclude "sitemap.xml" --exclude "script*" --exclude appspec.yml --exclude .gitignore --exclude .git* --delete
   post_build:
     commands:
       - echo Build completed on `date`
