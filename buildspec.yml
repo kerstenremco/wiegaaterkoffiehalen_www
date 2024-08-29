@@ -3,8 +3,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - aws s3 sync . s3://wiegaaterkoffiehalen-static/ --exclude "*_Store" --exclude "video*" --exclude "sitemap.xml" --exclude "buildspec.yml" --exclude ".gitignore" --exclude ".git*" --delete
-      - aws cloudfront create-invalidation --distribution-id E2X4WB5TYUPQN0 --paths "/*"
+      - aws s3 sync . s3://wiegaaterkoffiehalen-website-cdk/ --exclude "*_Store" --exclude "video*" --exclude "sitemap.xml" --exclude "buildspec.yml" --exclude ".gitignore" --exclude ".git*" --delete
+      - aws cloudfront create-invalidation --distribution-id E3ROT5KDR9AWK2 --paths "/*"
   post_build:
     commands:
       - echo Build completed on `date`
