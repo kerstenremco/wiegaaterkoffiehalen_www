@@ -1,31 +1,39 @@
 (function () {
   "use strict";
 
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("contact-form-name").value;
-    const email = document.getElementById("contact-form-email").value;
-    const text = document.getElementById("contact-form-text").value;
-    // send post request
-    fetch("https://wiegaaterkoffiehalen.nl/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, text }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status == "200") {
-          document.getElementById("contact-form-sended").classList.remove("d-none");
-          document.getElementById("contact-form-error").classList.add("d-none");
-          document.getElementById("contact-form").classList.add("d-none");
-          document.getElementById("contact-form").reset();
-        } else {
-          document.getElementById("contact-form-error").classList.remove("d-none");
-        }
-      });
-  });
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("contact-form-name").value;
+      const email = document.getElementById("contact-form-email").value;
+      const text = document.getElementById("contact-form-text").value;
+      // send post request
+      fetch("/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, text }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status == "200") {
+            document
+              .getElementById("contact-form-sended")
+              .classList.remove("d-none");
+            document
+              .getElementById("contact-form-error")
+              .classList.add("d-none");
+            document.getElementById("contact-form").classList.add("d-none");
+            document.getElementById("contact-form").reset();
+          } else {
+            document
+              .getElementById("contact-form-error")
+              .classList.remove("d-none");
+          }
+        });
+    });
 
   // ======= Sticky
   window.onscroll = function () {
@@ -48,7 +56,10 @@
 
     // show or hide the back-top-top button
     const backToTop = document.querySelector(".back-to-top");
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
       backToTop.style.display = "flex";
     } else {
       backToTop.style.display = "none";
